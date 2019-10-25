@@ -15,7 +15,7 @@ int main(){
 	string inDataInput;
 
 //prompts the user and accepts the name for an input text file.
-	cout << "input a file locaiton" << endl;
+	cout << "input a file location" << endl;
 	cin >> userInput;
 	cout << "userInput is " << userInput << endl;
 	inDataInput = userInput.c_str();
@@ -25,7 +25,12 @@ int main(){
 	inData.open(inDataInput);
 	inData >> fileOutput;
 	cout << "fileOutput is:'" << fileOutput << "'" << endl;
-	
+
+//Display number of lines, total character count, upper-case characters,
+//lower-case characters present in the input file
+
+
+
 	inData.close();
 	return 0;
 }
