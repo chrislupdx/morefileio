@@ -28,11 +28,12 @@ int main(){
 do
 {
 //	cout << fileOutput << ' ';
-	//loop below attempts to parse fileOutput on parse for newline characters
+	//loop below parses fileOutput on parse for newline characters
 	for(i = 0; i <= fileOutput.length(); i++)
 {	
 	c = fileOutput[i];
-	if(isspace(c))
+	//counts characters excluding non-characters
+	if(!isspace(c))
 	{
 	cout << fileOutput[i] << endl;
 		spaces++;
@@ -43,6 +44,11 @@ do
 	cout << "an a" << endl;
 		upperCaseCharacters++;
 	}
+	//countds lowercase characters.
+	if (!isupper(c))
+	{
+	lowerCaseCharacters++;
+	}
 }
 	//this loop tries to count uppercase letters
 //	if(c.isupper() == true )
@@ -52,6 +58,7 @@ do
 //	{
 }
 while(inData >> fileOutput);
+cout << "number of lower case characters: " << lowerCaseCharacters << endl;
 cout << "number of upper case characters: " << upperCaseCharacters << endl;
 cout << "number of characters: " << totalCharacterCount << endl;
 	cout << "number of spaces: " << spaces << endl;
