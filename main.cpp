@@ -9,7 +9,11 @@
 #include <fstream>
 
 using namespace std;
-int main(){
+char upperCase();
+char lowerCase();
+
+int main()
+{
 	ifstream inData;
 	string fileOutput, userInput;
 	string inDataInput;
@@ -28,41 +32,38 @@ int main(){
 do
 {
 //	cout << fileOutput << ' ';
-	//loop below parses fileOutput on parse for newline characters
+
+//loop below parses fileOutput on parse for newline characters
 	for(i = 0; i <= fileOutput.length(); i++)
 {	
 	c = fileOutput[i];
-	//counts characters excluding non-characters
-	if(!isspace(c))
-	{
-	cout << fileOutput[i] << endl;
-		spaces++;
-	}
-	//counts uppercase characters.	
+
+//counts uppercase characters.	
 	if (isupper(c))
 	{
-	cout << "an a" << endl;
 		upperCaseCharacters++;
 	}
-	//countds lowercase characters.
-	if (!isupper(c))
+
+//countds lowercase characters.
+	if (islower(c) && !isspace(c))
 	{
 	lowerCaseCharacters++;
 	}
+
+//counts characters
+	if (isalpha(c) || isdigit(c))
+	{
+	totalCharacterCount++;
+	}
+//counts newline charactesr
+//	if(fileOutput)
 }
-	//this loop tries to count uppercase letters
-//	if(c.isupper() == true )
-//	{
-//	++upperCaseCharacters;
-//	cout << "uppercase chracters: " << upperCaseCharacters << endl;
-//	{
 }
 while(inData >> fileOutput);
 cout << "number of lower case characters: " << lowerCaseCharacters << endl;
 cout << "number of upper case characters: " << upperCaseCharacters << endl;
 cout << "number of characters: " << totalCharacterCount << endl;
-	cout << "number of spaces: " << spaces << endl;
-cout << fileOutput;
+cout << "fileoutput: " <<  fileOutput << endl;
 
 
 //still needs to be able to read the whle output
