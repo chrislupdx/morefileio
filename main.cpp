@@ -33,7 +33,12 @@ int main()
 	inData.open(inDataInput);
 	inData >> fileOutput;
 //the do/while is supposed to parse the filestream
-//(I think as opposed to the string)
+
+if(!inData.eof())
+{
+	getline(inData, inDataStorage, '\n');
+	newLines++;
+}
 do
 {
 
@@ -46,6 +51,7 @@ do
 	if (isupper(c))
 		{
 		upperCaseCharacters++;
+		newLines++;
 		}
 
 //countds lowercase characters.
@@ -72,12 +78,10 @@ do
 
 }
 while(inData >> fileOutput);
-
-
 cout << "number of newLine characters: " << newLines << endl;
 cout << "number of lower case characters: " << lowerCaseCharacters << endl;
 cout << "number of upper case characters: " << upperCaseCharacters << endl;
-cout << "number of characters: " << totalCharacterCount << endl;
+cout << "number iof characters: " << totalCharacterCount << endl;
 // cout << "fileoutput: " <<  fileOutput << endl;
 
 
