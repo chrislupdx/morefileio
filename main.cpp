@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <string> 
 #include <fstream>
-
+		
 using namespace std;
 char upperCase();
 char lowerCase();
@@ -18,7 +18,10 @@ int main()
 	string fileOutput, userInput;
 	string inDataInput;
 	int spaces, i, totalLines, totalCharacterCount, upperCaseCharacters, lowerCaseCharacters;
+	int newLines;
+	string inDataStorage;
 	char c;
+
 //prompts the user and accepts the name for an input text file.
 	cout << "input a file location" << endl;
 	cin >> userInput;
@@ -29,41 +32,53 @@ int main()
 //read the contents of the input file	
 	inData.open(inDataInput);
 	inData >> fileOutput;
+//the do/while is supposed to parse the filestream
+//(I think as opposed to the string)
 do
 {
-//	cout << fileOutput << ' ';
 
 //loop below parses fileOutput on parse for newline characters
 	for(i = 0; i <= fileOutput.length(); i++)
-{	
+{  	
 	c = fileOutput[i];
 
 //counts uppercase characters.	
 	if (isupper(c))
-	{
+		{
 		upperCaseCharacters++;
-	}
+		}
 
 //countds lowercase characters.
 	if (islower(c) && !isspace(c))
-	{
+		{
 	lowerCaseCharacters++;
-	}
+		}
 
 //counts characters
-	if (isalpha(c) || isdigit(c))
-	{
+	if (isalpha(c) || isdigit(c) && !isspace(c))
+		{
 	totalCharacterCount++;
-	}
+		}
 //counts newline charactesr
-//	if(fileOutput)
-}
+
+
+//	if(!inData.eof())
+//		{	
+//	getline(inData, inDataStorage, '\n');
+//	++newLines;
+//		}
+
+	}
+
 }
 while(inData >> fileOutput);
+
+
+cout << "number of newLine characters: " << newLines << endl;
 cout << "number of lower case characters: " << lowerCaseCharacters << endl;
 cout << "number of upper case characters: " << upperCaseCharacters << endl;
 cout << "number of characters: " << totalCharacterCount << endl;
-cout << "fileoutput: " <<  fileOutput << endl;
+// cout << "fileoutput: " <<  fileOutput << endl;
 
 
 //still needs to be able to read the whle output
