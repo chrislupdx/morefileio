@@ -17,7 +17,8 @@ int main()
 	ifstream inData;
 	string fileOutput, userInput;
 	string inDataInput;
-	int spaces, i, totalLines, totalCharacterCount, upperCaseCharacters, lowerCaseCharacters;
+	int spaces, i;
+	int totalLines, totalCharacterCount, upperCaseCharacters, lowerCaseCharacters;
 	int newLines;
 	string inDataStorage;
 	char c;
@@ -32,13 +33,18 @@ int main()
 //read the contents of the input file	
 	inData.open(inDataInput);
 	inData >> fileOutput;
-//the do/while is supposed to parse the filestream
 
-if(!inData.eof())
-{
-	getline(inData, inDataStorage, '\n');
-	newLines++;
-}
+//this loop searches for newline characters (off by 1 rn)
+//while (!inData.eof())
+//{	
+//	getline(inData, inDataStorage, '\n');
+//	if(c != ' '){
+	//increment for the # of times that getline can run
+//	newLines++;
+//	}
+//}
+
+//the do/while is supposed to parse the filestream
 do
 {
 
@@ -51,41 +57,28 @@ do
 	if (isupper(c))
 		{
 		upperCaseCharacters++;
-		newLines++;
 		}
 
 //countds lowercase characters.
-	if (islower(c) && !isspace(c))
-		{
+	if (islower(c))
+	{
 	lowerCaseCharacters++;
-		}
-
-//counts characters
-	if (isalpha(c) || isdigit(c) && !isspace(c))
-		{
-	totalCharacterCount++;
-		}
-//counts newline charactesr
-
-
-//	if(!inData.eof())
-//		{	
-//	getline(inData, inDataStorage, '\n');
-//	++newLines;
-//		}
-
 	}
 
+//counts characters
+	if (isalpha(c) || isdigit(c))
+	{
+	totalCharacterCount++;
+		}
+	}
 }
 while(inData >> fileOutput);
+//this while statement is supposed to go off while things are parsing
+
 cout << "number of newLine characters: " << newLines << endl;
 cout << "number of lower case characters: " << lowerCaseCharacters << endl;
 cout << "number of upper case characters: " << upperCaseCharacters << endl;
 cout << "number iof characters: " << totalCharacterCount << endl;
-// cout << "fileoutput: " <<  fileOutput << endl;
-
-
-//still needs to be able to read the whle output
 
 //Display number of lines, total character count, upper-case characters,
 //lower-case characters present in the input file
