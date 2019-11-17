@@ -17,6 +17,7 @@ char c;
 string stringChar, userInput, fileOutput;
 string getlineOutput, remade;
 ifstream inData;
+int lines = 0;
 
 //takes userInput
 takeInput(userInput);
@@ -25,20 +26,36 @@ readFile(userInput, inData, fileOutput);
 
 //while the filestream is being read to string
 while (inData >> fileOutput)
-{
+  {
+ //output as string or char see if we do do that on the chunk near ln 41
+
 //for the length of the file output, traverse for...
 for (i = 0; i <= fileOutput.length(); i++)
-  {
-//ok but how do you use getline to ping stuff
-//getline(inData, fileOutput);  
-  
-//output as string or char
- stringChar = fileOutput[i];
- cout << stringChar; 
-  
-  }
-}
+    {
+//while getline can still run, increment line
+while (getline(inData, getlineOutput))
+       {
+     //increment the lines int each time newLine evals true
+     ++lines;
+    
+    //here, getlineOutput prints the filestream line by line.
+    // cout << getlineOutput<< endl; 
+      
+  //loop through getlineOutput and analyze the contents
+  for (int i = 0; i < getlineOutput.length(); i++)
+      {
+        
+       // cout << getlineOutput[i] << endl;
+       }
 
+       };
+
+    cout << getlineOutput;
+    }
+  }
+
+
+    cout << lines << endl;
   return 0;
 }
 
