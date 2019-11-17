@@ -12,8 +12,8 @@ void showContent( );
 
 int main()
 {
-int i;
-char c;
+int i, upperCase;
+char c, currentChar;
 string stringChar, userInput, fileOutput;
 string getlineOutput, remade;
 ifstream inData;
@@ -26,36 +26,32 @@ readFile(userInput, inData, fileOutput);
 
 //while the filestream is being read to string
 while (inData >> fileOutput)
-  {
- //output as string or char see if we do do that on the chunk near ln 41
-
-//for the length of the file output, traverse for...
-for (i = 0; i <= fileOutput.length(); i++)
-    {
+ {
 //while getline can still run, increment line
 while (getline(inData, getlineOutput))
-       {
+    {
      //increment the lines int each time newLine evals true
      ++lines;
-    
     //here, getlineOutput prints the filestream line by line.
     // cout << getlineOutput<< endl; 
       
   //loop through getlineOutput and analyze the contents
   for (int i = 0; i < getlineOutput.length(); i++)
-      {
-        
-       // cout << getlineOutput[i] << endl;
-       }
-
-       };
-
-    cout << getlineOutput;
+     {
+ //We are missing the first few words?
+ //    cout << getlineOutput[i];
+ //    currentChar = getlineOutput[i];
+     //if current character is uppercase, increment
+   // if (isupper(currentChar))
+   //    {
+   //     ++upperCase; 
+   //   }
+     }
+//    cout << getlineOutput;
     }
-  }
-
-
-    cout << lines << endl;
+ }
+    cout << "upperCase is" << upperCase << endl;
+    cout << "number of newlines:" << lines << endl;
   return 0;
 }
 
