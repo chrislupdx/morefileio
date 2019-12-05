@@ -18,41 +18,58 @@ string stringChar, userInput, fileOutput;
 string getlineOutput, remade;
 ifstream inData;
 int lines = 0;
-
+int upper = 0;
+int chars = 0;
+int lower = 0;
+int length;
+int charCounter = 0;
+char charParse[length];
 //takes userInput
 takeInput(userInput);
 //reads file
 readFile(userInput, inData, fileOutput);
 
-//while the filestream is being read to string
 while (inData >> fileOutput)
- {
-//while getline can still run, increment line
-while (getline(inData, getlineOutput))
+  {
+while (getline(inData, getlineOutput))//while getline can still run, increment line
     {
-     //increment the lines int each time newLine evals true
-     ++lines;
-    //here, getlineOutput prints the filestream line by line.
-    // cout << getlineOutput<< endl; 
-      
-  //loop through getlineOutput and analyze the contents
-  for (int i = 0; i < getlineOutput.length(); i++)
-     {
- //We are missing the first few words?
- //    cout << getlineOutput[i];
- //    currentChar = getlineOutput[i];
-     //if current character is uppercase, increment
-   // if (isupper(currentChar))
-   //    {
-   //     ++upperCase; 
-   //   }
-     }
-//    cout << getlineOutput;
+     ++lines; //increment the lines int each time newLine evals true
     }
- }
-    cout << "upperCase is" << upperCase << endl;
-    cout << "number of newlines:" << lines << endl;
-  return 0;
+  }  
+inData.close();
+inData.open(userInput);
+
+  while (inData >> fileOutput) //trying to read char nums in string
+  {
+    chars = chars + fileOutput.length();
+  }
+  length = chars; //character count should get the ln of the whole thing
+inData.close();
+inData.open(userInput);
+
+ 
+  while (inData >> fileOutput) //second traversal
+  {
+   // cout << fileOutput.c_str() << endl;
+    for (int i = 0; i < fileOutput.length(); i++)
+    {
+      if(isupper(fileOutput.c_str()[i]))
+      {
+        ++upper;
+      }
+      if(islower(fileOutput.c_str()[i]))
+      {
+       ++lower;
+      } 
+    }
+  } 
+
+  cout << endl; 
+  cout << "character count: " << chars << endl;
+  cout << "upperCase is: " << upper << endl;
+  cout << "lowerCase is: " << lower << endl;
+  cout << "number of newlines: " << lines << endl;
+return 0;  
 }
 
 void takeInput(string& userInput)
@@ -62,12 +79,10 @@ cout << "Input a file lcoation" << endl;
 cin >> userInput;
 
 //stringify
-userInput = userInput.c_str();
+userInput = userInput.c_str(); //holy fuck can we put it in an array instead
 }
 
 void readFile(string userInput, ifstream& inData, string& fileOutput)
 {
-//opens filestream at userInput location
   inData.open(userInput);
-  inData >> fileOutput;
 }
